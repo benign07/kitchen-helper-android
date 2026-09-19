@@ -1,5 +1,7 @@
 apply plugin: "com.android.application"
 
+def otaKeystorePath = System.getenv("OTA_KEYSTORE_PATH")
+
 android {
     namespace "kr.co.kitchenhelper.inspector"
     compileSdk 36
@@ -8,11 +10,27 @@ android {
         applicationId "kr.co.kitchenhelper.inspector"
         minSdk 26
         targetSdk 36
-        versionCode 15
-        versionName "0.14.1"
+        versionCode 16
+        versionName "0.14.2"
+    }
+
+    signingConfigs {
+        if (otaKeystorePath) {
+            ota {
+                storeFile file(otaKeystorePath)
+                storePassword "android"
+                keyAlias "androiddebugkey"
+                keyPassword "android"
+            }
+        }
     }
 
     buildTypes {
+        debug {
+            if (otaKeystorePath) {
+                signingConfig signingConfigs.ota
+            }
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"

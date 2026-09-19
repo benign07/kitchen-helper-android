@@ -8,6 +8,8 @@ captures/
 .cxx/
 /*.png
 /*.xml
+/*.apk
+/release-check/
 *.jks
 *.keystore
 keystore.properties
