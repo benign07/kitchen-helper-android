@@ -76,3 +76,4 @@ APK: `app/build/outputs/apk/debug/app-debug.apk`
 - 최초 한 번은 Android 설정에서 이 앱의 `알 수 없는 앱 설치` 허용 필요
 - Git 태그 `vX.Y.Z`를 푸시하면 GitHub Actions가 동일한 서명으로 APK를 빌드해 Release에 게시
 - 다운로드 파일은 GitHub가 제공하는 SHA-256 값이 있을 경우 설치 전 검증
+- v0.14.1: 실제 기기 OTA 설치 흐름 검증 릴리스
